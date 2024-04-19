@@ -90,7 +90,7 @@ public class UserAPI {
             return "error-page";
         }
     }
-    
+
     @GetMapping("/profUser/{userId}")
     public String profilePage(Model model, @PathVariable Long userId) {
         try {
@@ -133,7 +133,7 @@ public class UserAPI {
                               @PathVariable Long userId) {
         try {
             userService.update(userId, currentUser);
-            userInfoService.updateUserInfo(userInfo.getId(),userInfo);
+            userInfoService.updateUserInfo(userInfo.getId(), userInfo);
             return "redirect:/register/profUser/" + userId;
         } catch (Exception e) {
             model.addAttribute("errorMessage", "Duplicate email or username. Please choose another one.");

@@ -2,6 +2,7 @@ package peaksoft.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import peaksoft.entity.Comment;
 import peaksoft.entity.Like;
 import peaksoft.entity.Post;

@@ -3,6 +3,7 @@ package peaksoft.service.impl;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import peaksoft.entity.Image;
 import peaksoft.entity.Post;
 import peaksoft.entity.User;
 import peaksoft.repo.PostRepository;
@@ -18,14 +19,13 @@ import java.util.NoSuchElementException;
 public class PostServiceImpl implements PostService {
     private final PostRepository postRepo;
     private final UserRepository userRepo;
+
     @Override
     public Post save(Long userId, Post newPost) {
-        User user = userRepo.findById(userId)
-                .orElseThrow();
-        newPost.getImages().forEach(image -> image.setPost(newPost));
+        User user = userRepo.findById(userId).orElseThrow(null);
         user.getPosts().add(newPost);
         newPost.setUser(user);
-        return postRepo.save(newPost) ;
+         return postRepo.save(newPost);
     }
 
     @Override @Transactional
